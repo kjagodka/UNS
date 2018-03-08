@@ -32,10 +32,14 @@ sigma1 = calc_sigma(n1, p1, mean_x1)
 sigma2 = calc_sigma(n2, p2, mean_x2)
 
 przedzial_predykacji <- function(n, m, alfa, mean_x, sigma) {
-    t = qt(1 - alfa, n - 1)
+    t = qt(1 - alfa / 2, n - 1)
     delta = t * sigma * sqrt(1 / n + 1 / m)
     return(c(mean_x - delta, mean_x + delta))
 }
 
-przedzial_predykacji(n1, 1, 0.2, mean_x1, sigma1)
-przedzial_predykacji(n1, 1, 0.33, mean_x1, sigma1)
+przedzial_predykacji(n1, 1, 0.4, mean_x1, sigma1)
+przedzial_predykacji(n1, 1, 0.66, mean_x1, sigma1)
+
+przedzial_predykacji(n2, 2, 0.4, mean_x2, sigma2)
+
+przedzial_predykacji(n2, 2, 0.66, mean_x2, sigma2)
