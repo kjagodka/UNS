@@ -23,28 +23,23 @@ przedzial_predykacji <- function(n, m, alfa, mean_x, sigma) {
     return(c(mean_x - delta, mean_x + delta))
 }
 
-m1 = 100
-m2 = 10
+m1 = 10
+m2 = 100
+alpha = 0.95
 
 
-"Przedzial predykcji dla pojedynczego kursanta"
-"bad.1, 40% poza przedzialem"
-przedzial_predykacji(n1, 1, 0.4, mean_x1, sigma1)
-"bad.1, 66% poza przedzialem"
-przedzial_predykacji(n1, 1, 0.66, mean_x1, sigma1)
+"BADANIE 1"
+"Przedział ufności dla populacji"
+przedzial_predykacji(n1, Inf, 1 - alpha, mean_x1, sigma1)
+"Przedział ufności dla pojedynczej próby"
+przedzial_predykacji(n1, 1, 1 - alpha, mean_x1, sigma1)
+"Przedział ufności dla kolejnej takiej samej próby"
+przedzial_predykacji(n1, n1, 1 - alpha, mean_x1, sigma1)
 
-"bad.2, 40% poza przedzialem"
-przedzial_predykacji(n2, 1, 0.4, mean_x2, sigma2)
-"bad.2, 66% poza przedzialem"
-przedzial_predykacji(n2, 1, 0.66, mean_x2, sigma2)
-
-"Przedzial predykcji dla kolejnej próby"
-"bad.1, 40% poza przedzialem"
-przedzial_predykacji(n1, m1, 0.4, mean_x1, sigma1)
-"bad.1, 66% poza przedzialem"
-przedzial_predykacji(n1, m1, 0.66, mean_x1, sigma1)
-
-"bad.2, 40% poza przedzialem"
-przedzial_predykacji(n2, m2, 0.4, mean_x2, sigma2)
-"bad.2, 66% poza przedzialem"
-przedzial_predykacji(n2, m2, 0.66, mean_x2, sigma2)
+"BADANIE 2"
+"Przedział ufności dla populacji"
+przedzial_predykacji(n2, Inf, 1 - alpha, mean_x1, sigma1)
+"Przedział ufności dla pojedynczej próby"
+przedzial_predykacji(n2, 1, 1 - alpha, mean_x1, sigma1)
+"Przedział ufności dla kolejnej takiej samej próby"
+przedzial_predykacji(n2, n2, 1 - alpha, mean_x1, sigma1)
