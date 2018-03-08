@@ -23,8 +23,8 @@ przedzial_predykacji <- function(n, m, alfa, mean_x, sigma) {
     return(c(mean_x - delta, mean_x + delta))
 }
 
-m1 = 10
-m2 = 20
+m1 = 100
+m2 = 10
 
 
 "Przedzial predykcji dla pojedynczego kursanta"
