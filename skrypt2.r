@@ -23,8 +23,20 @@ przedzial_predykacji <- function(n, m, alfa, mean_x, sigma) {
     return(c(mean_x - delta, mean_x + delta))
 }
 
+"Przedzial predykcji dla pojedynczego kursanta"
+"pierwsze badanie, dla 1 kursanta, 40% poza przedzialem"
 przedzial_predykacji(n1, 1, 0.4, mean_x1, sigma1)
+"pierwsze badanie, dla 1 kursanta, 66% poza przedzialem"
 przedzial_predykacji(n1, 1, 0.66, mean_x1, sigma1)
 
-przedzial_predykacji(n2, 2, 0.4, mean_x2, sigma2)
-przedzial_predykacji(n2, 2, 0.66, mean_x2, sigma2)
+"drugie badanie, dla 1 kursanta, 40% poza przedzialem"
+przedzial_predykacji(n2, 1, 0.4, mean_x2, sigma2)
+"drugie badanie, dla 1 kursanta, 66% poza przedzialem"
+przedzial_predykacji(n2, 1, 0.66, mean_x2, sigma2)
+
+
+przedzial_predykacji(n1, Inf, 0.4, mean_x1, sigma1)
+przedzial_predykacji(n1, Inf, 0.66, mean_x1, sigma1)
+
+przedzial_predykacji(n2, Inf, 0.4, mean_x2, sigma2)
+przedzial_predykacji(n2, Inf, 0.66, mean_x2, sigma2)
