@@ -23,24 +23,28 @@ przedzial_predykacji <- function(n, m, alfa, mean_x, sigma) {
     return(c(mean_x - delta, mean_x + delta))
 }
 
+m1 = 10
+m2 = 20
+
+
 "Przedzial predykcji dla pojedynczego kursanta"
-"pierwsze badanie, 40% poza przedzialem"
+"bad.1, 40% poza przedzialem"
 przedzial_predykacji(n1, 1, 0.4, mean_x1, sigma1)
-"pierwsze badanie, 66% poza przedzialem"
+"bad.1, 66% poza przedzialem"
 przedzial_predykacji(n1, 1, 0.66, mean_x1, sigma1)
 
-"drugie badanie, 40% poza przedzialem"
+"bad.2, 40% poza przedzialem"
 przedzial_predykacji(n2, 1, 0.4, mean_x2, sigma2)
-"drugie badanie, 66% poza przedzialem"
+"bad.2, 66% poza przedzialem"
 przedzial_predykacji(n2, 1, 0.66, mean_x2, sigma2)
 
-"Przedzial predykcji dla średniej"
-"pierwsze badanie, 40% poza przedzialem"
-przedzial_predykacji(n1, Inf, 0.4, mean_x1, sigma1)
-"pierwsze badanie, 66% poza przedzialem"
-przedzial_predykacji(n1, Inf, 0.66, mean_x1, sigma1)
+"Przedzial predykcji dla kolejnej próby"
+"bad.1, 40% poza przedzialem"
+przedzial_predykacji(n1, m1, 0.4, mean_x1, sigma1)
+"bad.1, 66% poza przedzialem"
+przedzial_predykacji(n1, m1, 0.66, mean_x1, sigma1)
 
-"drugie badanie, 40% poza przedzialem"
-przedzial_predykacji(n2, Inf, 0.4, mean_x2, sigma2)
-"drugie badanie, 40% poza przedzialem"
-przedzial_predykacji(n2, Inf, 0.66, mean_x2, sigma2)
+"bad.2, 40% poza przedzialem"
+przedzial_predykacji(n2, m2, 0.4, mean_x2, sigma2)
+"bad.2, 66% poza przedzialem"
+przedzial_predykacji(n2, m2, 0.66, mean_x2, sigma2)
