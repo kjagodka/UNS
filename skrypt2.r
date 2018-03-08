@@ -38,8 +38,8 @@ przedzial_predykacji(n1, n1, 1 - alpha, mean_x1, sigma1)
 
 "BADANIE 2"
 "Przedział ufności dla populacji"
-przedzial_predykacji(n2, Inf, 1 - alpha, mean_x1, sigma1)
+przedzial_predykacji(n2, Inf, 1 - alpha, mean_x2, sigma2)
 "Przedział ufności dla pojedynczej próby"
-przedzial_predykacji(n2, 1, 1 - alpha, mean_x1, sigma1)
+przedzial_predykacji(n2, 1, 1 - alpha, mean_x2, sigma2)
 "Przedział ufności dla kolejnej takiej samej próby"
-przedzial_predykacji(n2, n2, 1 - alpha, mean_x1, sigma1)
+przedzial_predykacji(n2, n2, 1 - alpha, mean_x2, sigma2)
