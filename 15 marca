@@ -1,0 +1,82 @@
+n = 10000
+#dane populacji prawdziwe
+mean = 950
+sd = 1250
+
+#przykladowy rozklad
+wzrost = rnorm(n, mean, sd)
+
+#histogram
+hist(wzrost)
+
+"1A"
+#odsetek populacji który mial mniej niż 0 i mniej niż 500 z monte carlo
+pnorm(0, mean, sd)
+pnorm(500, mean, sd)
+
+#odsetek populacji który mial mniej niż 0 i mniej niż 500 z wzoru
+"1B"
+sum(wzrost < 0) / n
+sum(wzrost < 500) / n
+
+#wyniki proby 1
+n1 = 10
+mean1 = 1050
+p1 = 0.031
+
+#wyniki proby 2
+n2 = 100
+mean2 = 900
+p2 = 2.78e-11
+
+
+#oblicza sigme w teście z n, p-wartosci, uzyskanej sredniej
+calc_sigma <- function(n, p, mean_x) {
+  t0 = qt(1 - p / 2, n - 1)
+  #t0 = mean_x * sqrt(n) / sigma
+  sigma = mean_x * sqrt(n) / t0
+  return (sigma)
+}
+
+#sigmy obliczone z wyników prób
+sigma1 = calc_sigma(n1, p1, mean1)
+sigma2 = calc_sigma(n2, p2, mean2)
+
+odchylenia1 = 0;
+odchylenia2 = 0;
+
+for (i in 1:n) {
+  proba1 = rnorm(n1, mean, sd) #losuje probe rozmiaru takiego jak 1 badanie
+  proba2 = rnorm(n2, mean, sd) #losuje probe rozmiaru takiego jak 1 badanie
+  if(abs(mean(proba1)-mean) > abs(mean1 - mean))
+    odchylenia1 = odchylenia1 + 1
+  if(abs(mean(proba2)-mean) > abs(mean2 - mean))
+    odchylenia2 = odchylenia2 + 1
+}
+
+#prawdopodobienstwo uzyskania wyniku takiego jak w probie 1, 2 metodą montecarlo
+"1C Monte Carlo"
+odchylenia1 / n
+odchylenia2 / n
+
+#prawdopodobienstwo uzyskania wyniku takiego jak w probie 1, 2 z wzoru
+"1C Wzory"
+2 * (pnorm(mean - abs(mean - mean1), mean, sd/sqrt(n1)))
+2 * (pnorm(mean - abs(mean - mean2), mean, sd/sqrt(n2)))
+
+przedzial_predykacji <- function(n, m, alfa, mean, sigma) {
+  t = qt((1 + alfa) / 2, n - 1)
+  delta = t * sigma * sqrt(1 / n + 1 / m)
+  return(c(mean - delta, mean + delta))
+}
+
+"2A, przedzialy predykcji, alfa 95%"
+#przedzial predykcji na podstawie wyników pierwszego badania, w którym z pr powinny być wyniki drugiego pytania
+przedzial_predykacji(n1, n2, 0.95, mean1, sigma1)
+#przedzial predykcji na podstawie wyników drugiego badania, w którym powinny być wyniki drugiego pytania
+przedzial_predykacji(n2, n1, 0.95, mean2, sigma2)
+
+dane1 = read.csv("C:/Users/UNS/Desktop/historia_1.csv")
+dane2 = read.csv("C:/Users/UNS/Desktop/historia_2.csv")
+t.test(dane1, dane2)
+var.test(dane1, dane2)
