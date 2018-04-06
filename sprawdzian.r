@@ -4,6 +4,7 @@ przedzialDo = 1540
 
 #oblicza t0 z wzoru na p-wartosc
 obliczT0 <- function(n, p) {
+  #p = 2 * (1 - pt(t0, 2 * n - 2))
   t0 = qt(1 - p / 2, 2 * n - 2)
   return (t0)
 }
@@ -20,7 +21,7 @@ obliczSyfnyPierwiastek <- function(n, p) {
 
 poziomUfnosci <- function(n, p) {
   syfnyPierwiastek = obliczSyfnyPierwiastek(n, p)
-  #delta = odleglosc od konca przedzialu do srodka
+  #delta = odleglosc od konca przedzialu do srodka = t * pierwiastek
   delta = roznicaSrednich - przedzialOd
   #delta = t * pierwiastek
   t = delta / syfnyPierwiastek
